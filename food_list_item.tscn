@@ -36,3 +36,6 @@ offset_right = 1024.0
 offset_bottom = 64.0
 theme_override_font_sizes/font_size = 40
 text = "⚂"
+
+[connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="pressed" from="Xbutton" to="." method="_on_xbutton_pressed"]

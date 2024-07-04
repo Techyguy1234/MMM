@@ -8,7 +8,10 @@ var list_of_required_groceries = []
 var list_of_current_plan
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	loadlist()
+	if $"/root/Liststorage".unopened:
+		loadlist()
+		$"/root/Liststorage".unopened = false
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,3 +61,8 @@ func _on_exit_pressed() -> void:
 
 func _on_save_pressed() -> void:
 	savelist()
+
+
+func _on_view_all_pressed() -> void:
+	$"/root/Liststorage".current_list_item_type = 1
+	get_tree().change_scene_to_file("res://food_list_item_host.tscn")

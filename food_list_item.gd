@@ -22,3 +22,16 @@ func hide_reroll():
 
 func setdish(dish):
 	$DishName.text = dish
+
+
+func _on_check_button_pressed() -> void:
+	$"/root/Liststorage".currently_editing = $"/root/Liststorage".list_of_meals.find($DishName.text)
+	get_tree().change_scene_to_file("res://meal_name_recipie_groceries.tscn")
+
+
+func _on_xbutton_pressed() -> void:
+	var to_delete = $"/root/Liststorage".list_of_meals.find($DishName.text)
+	$"/root/Liststorage".list_of_meals.pop_at(to_delete)
+	$"/root/Liststorage".list_of_recipies.pop_at(to_delete)
+	$"/root/Liststorage".list_of_required_groceries.pop_at(to_delete)
+	delete_item()

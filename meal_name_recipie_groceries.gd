@@ -14,6 +14,7 @@ func _ready() -> void:
 	$RecipieEditor.hide()
 	$GroceriesEditor.hide()
 	$Save.hide()
+	loadItem((get_node("/root/Liststorage").currently_editing))
 	
 
 func loadItem(itemID):
@@ -65,7 +66,7 @@ func exit(itemID):
 	$"/root/Liststorage".list_of_meals = list_of_meals
 	$"/root/Liststorage".list_of_recipies = list_of_recipies
 	$"/root/Liststorage".list_of_required_groceries = list_of_required_groceries
-	
+	get_tree().change_scene_to_file("res://main.tscn")
 
 
 
