@@ -74,3 +74,10 @@ func _on_save_pressed() -> void:
 func _on_view_all_pressed() -> void:
 	$"/root/Liststorage".current_list_item_type = 1
 	get_tree().change_scene_to_file("res://food_list_item_host.tscn")
+
+
+func _on_make_email_pressed() -> void:
+	var emailbody = ""
+	for b in 4:
+		emailbody = emailbody + "-" + str($"/root/Liststorage".list_of_current_plan[b-1]) + "\n" + str($"/root/Liststorage".list_of_required_groceries[($"/root/Liststorage".list_of_current_plan[b-1])]) + "\n"
+	OS.shell_open("mailto:" + $MakeEmail/EmailInput.text + "?subject=Your%20latest%20MMM%20list&body=" + str(emailbody.uri_encode()))
