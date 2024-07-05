@@ -79,5 +79,7 @@ func _on_view_all_pressed() -> void:
 func _on_make_email_pressed() -> void:
 	var emailbody = ""
 	for b in 4:
-		emailbody = emailbody + "-" + str($"/root/Liststorage".list_of_current_plan[b-1]) + "\n" + str($"/root/Liststorage".list_of_required_groceries[($"/root/Liststorage".list_of_current_plan[b-1])]) + "\n"
+		emailbody = emailbody + "-" + $"/root/Liststorage".list_of_meals[($"/root/Liststorage".list_of_current_plan[b])] + "\n" + $"/root/Liststorage".list_of_required_groceries[($"/root/Liststorage".list_of_current_plan[b])] + "\n"
+	print(emailbody)
 	OS.shell_open("mailto:" + $MakeEmail/EmailInput.text + "?subject=Your%20latest%20MMM%20list&body=" + str(emailbody.uri_encode()))
+	print("mailto:" + $MakeEmail/EmailInput.text + "?subject=Your%20latest%20MMM%20list&body=" + str(emailbody.uri_encode()))
