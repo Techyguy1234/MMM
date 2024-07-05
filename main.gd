@@ -1,6 +1,7 @@
 extends Node2D
 const Main_save_location = "user://Current.fdlst"
 
+const meals_per_week = 4
 
 var list_of_meals = []
 var list_of_recipies = []
@@ -48,11 +49,18 @@ func loadlist():
 
 
 func _on_newlist_pressed() -> void:
-	pass # Replace with function body.
-
+	$"/root/Liststorage".list_of_current_plan = []
+	for a in ($"/root/Liststorage".list_of_meals.size()):
+		$"/root/Liststorage".list_of_current_plan.append(a)
+	
+	for a in ($"/root/Liststorage".list_of_meals.size() - (meals_per_week)):
+		$"/root/Liststorage".list_of_current_plan.pop_at(randi_range(0,$"/root/Liststorage".list_of_current_plan.size()-1))
+	$"/root/Liststorage".current_list_item_type = 2
+	get_tree().change_scene_to_file("res://food_list_item_host.tscn")
 
 func _on_view_pressed() -> void:
-	pass # Replace with function body.
+	$"/root/Liststorage".current_list_item_type = 2
+	get_tree().change_scene_to_file("res://food_list_item_host.tscn")
 
 
 func _on_exit_pressed() -> void:

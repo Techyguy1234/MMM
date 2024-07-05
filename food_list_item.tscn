@@ -39,3 +39,4 @@ text = "reroll"
 
 [connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
 [connection signal="pressed" from="Xbutton" to="." method="_on_xbutton_pressed"]
+[connection signal="pressed" from="RerollButton" to="." method="_on_reroll_button_pressed"]

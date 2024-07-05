@@ -25,6 +25,29 @@ func setuplist(type:int):
 			newitem.hide_reroll()
 			items.append(newitem)
 			$".".add_child(newitem)
+	
+	
+	
+	if type == 2:
+		for x in get_node("/root/Liststorage").list_of_current_plan.size():
+			newitem = item.instantiate()
+			newitem.type = 2
+			newitem.setdish(get_node("/root/Liststorage").list_of_meals[($"/root/Liststorage".list_of_current_plan[x])])
+			newitem.position.y = (x * 64) - (floori(((x) / 9))*576)
+			newitem.position.x = floori(((x) / 9)) * 1152
+			newitem.hide_x()
+			items.append(newitem)
+			$".".add_child(newitem)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 

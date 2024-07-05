@@ -35,3 +35,8 @@ func _on_xbutton_pressed() -> void:
 	$"/root/Liststorage".list_of_recipies.pop_at(to_delete)
 	$"/root/Liststorage".list_of_required_groceries.pop_at(to_delete)
 	delete_item()
+
+
+func _on_reroll_button_pressed() -> void:
+	$"/root/Liststorage".list_of_current_plan[$"/root/Liststorage".list_of_current_plan.find($"/root/Liststorage".list_of_meals.find($DishName.text))] = randi_range(0,($"/root/Liststorage".list_of_current_plan.size() - 1))
+	get_tree().change_scene_to_file("res://main.tscn")
