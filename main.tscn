@@ -69,6 +69,16 @@ offset_right = 192.0
 theme_override_font_sizes/font_size = 14
 placeholder_text = "example@example.com"
 
+[node name="ImportExport" type="Button" parent="."]
+offset_left = 192.0
+offset_top = 512.0
+offset_right = 256.0
+offset_bottom = 648.0
+text = "Import
+
+
+Export"
+
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
 [connection signal="tree_exiting" from="Save" to="." method="_on_save_tree_exiting"]
@@ -76,3 +86,4 @@ placeholder_text = "example@example.com"
 [connection signal="pressed" from="Newlist" to="." method="_on_newlist_pressed"]
 [connection signal="pressed" from="ViewAll" to="." method="_on_view_all_pressed"]
 [connection signal="pressed" from="MakeEmail" to="." method="_on_make_email_pressed"]
+[connection signal="pressed" from="ImportExport" to="." method="_on_import_export_pressed"]

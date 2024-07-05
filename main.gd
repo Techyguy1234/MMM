@@ -93,3 +93,7 @@ func generate_email():
 
 func _on_make_email_pressed() -> void:
 	generate_email()
+
+
+func _on_import_export_pressed() -> void:
+	get_tree().change_scene_to_file("res://csv_importer.tscn")
