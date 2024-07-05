@@ -7,13 +7,18 @@ var list_of_meals = []
 var list_of_recipies = []
 var list_of_required_groceries = []
 var list_of_current_plan
+
+var test = "mailto:" + "jo@gmail.com"
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if $"/root/Liststorage".unopened:
 		loadlist()
 		$"/root/Liststorage".unopened = false
-
-
+	#OS.alert("abc")
+	#os_do_something("https://docs.godotengine.org/en/latest/?highlight=Godot%20Engine%3%docs")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -75,11 +80,16 @@ func _on_view_all_pressed() -> void:
 	$"/root/Liststorage".current_list_item_type = 1
 	get_tree().change_scene_to_file("res://food_list_item_host.tscn")
 
+func generate_email():
+	OS.alert("started gen")
+	$"/root/Liststorage".email = ("mailto:" + $MakeEmail/EmailInput.text.uri_encode() + "?subject=Your%20latest%20MMM%20list&body=")
+	for n in meals_per_week:
+		get_node("/root/Liststorage").email = get_node("/root/Liststorage").email + ("-" + get_node("/root/Liststorage").list_of_meals[(get_node("/root/Liststorage").list_of_current_plan[n])] + "\n" +get_node("/root/Liststorage").list_of_required_groceries[(get_node("/root/Liststorage").list_of_current_plan[n])] + "\n").uri_encode()
+	OS.alert("finished gen")
+	get_tree().change_scene_to_file("res://emailsend.tscn")
+	
+	
+	
 
 func _on_make_email_pressed() -> void:
-	var emailbody = ""
-	for b in 4:
-		emailbody = emailbody + "-" + $"/root/Liststorage".list_of_meals[($"/root/Liststorage".list_of_current_plan[b])] + "\n" + $"/root/Liststorage".list_of_required_groceries[($"/root/Liststorage".list_of_current_plan[b])] + "\n"
-	print(emailbody)
-	OS.shell_open("mailto:" + $MakeEmail/EmailInput.text + "?subject=Your%20latest%20MMM%20list&body=" + str(emailbody.uri_encode()))
-	print("mailto:" + $MakeEmail/EmailInput.text + "?subject=Your%20latest%20MMM%20list&body=" + str(emailbody.uri_encode()))
+	generate_email()

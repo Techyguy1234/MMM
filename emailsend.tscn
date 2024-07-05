@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsk74c44vt3g"]
+
+[ext_resource type="Script" path="res://emailsend.gd" id="1_45pyi"]
+
+[node name="Emailsend" type="Node"]
+script = ExtResource("1_45pyi")

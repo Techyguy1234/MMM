@@ -8,3 +8,8 @@ var currently_editing
 var current_list_item_type
 
 var unopened = true
+
+func os_do_something(aabbcc):
+	OS.shell_open(aabbcc)
+
+var email
