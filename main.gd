@@ -81,11 +81,11 @@ func _on_view_all_pressed() -> void:
 	get_tree().change_scene_to_file("res://food_list_item_host.tscn")
 
 func generate_email():
-	OS.alert("started gen")
+	#OS.alert("started gen")
 	$"/root/Liststorage".email = ("mailto:" + $MakeEmail/EmailInput.text.uri_encode() + "?subject=Your%20latest%20MMM%20list&body=")
 	for n in meals_per_week:
 		get_node("/root/Liststorage").email = get_node("/root/Liststorage").email + ("-" + get_node("/root/Liststorage").list_of_meals[(get_node("/root/Liststorage").list_of_current_plan[n])] + "\n" +get_node("/root/Liststorage").list_of_required_groceries[(get_node("/root/Liststorage").list_of_current_plan[n])] + "\n").uri_encode()
-	OS.alert("finished gen")
+	#OS.alert("finished gen")
 	get_tree().change_scene_to_file("res://emailsend.tscn")
 	
 	
